@@ -22,6 +22,11 @@ export default function App() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const redirectUri = useMemo(() => AuthSession.makeRedirectUri({ scheme: "myapp", path: "callback" }), []);
 
+  /**
+   * Exchanges authorization code for a token.
+   * Input: one-time authorization code and original PKCE verifier.
+   * Output: token payload from /api/token.
+   */
   async function exchangeCodeForToken(code: string, codeVerifier: string): Promise<TokenResponse> {
     const response = await fetch(`${SERVER_BASE_URL}/api/token`, {
       method: "POST",
@@ -40,6 +45,11 @@ export default function App() {
     return (await response.json()) as TokenResponse;
   }
 
+  /**
+   * Starts browser login, handles deep-link callback, and stores access token.
+   * Input: none (uses local PKCE and app config values).
+   * Output: updates UI state to dashboard when login succeeds.
+   */
   async function handleLogin() {
     try {
       setLoading(true);
@@ -82,6 +92,11 @@ export default function App() {
     }
   }
 
+  /**
+   * Clears stored token and returns user to login screen.
+   * Input: none.
+   * Output: reset of auth-related local state.
+   */
   async function handleLogout() {
     await SecureStore.deleteItemAsync("access_token");
     setAccessToken(null);

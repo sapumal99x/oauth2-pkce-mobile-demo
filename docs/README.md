@@ -1,12 +1,20 @@
 # Project Documentation
 
-This demo simulates OAuth2 Authorization Code Flow with PKCE for a mobile client.
+This project simulates OAuth2 Authorization Code Flow with PKCE for a mobile app and includes a simple SSO simulation.
 
-It is designed for learning, so everything is intentionally simple: no database, no auth libraries, and an in-memory authorization code store.
+It is intentionally educational: no database, no external identity provider API, and an in-memory authorization code store.
 
-## Architecture
+## Read in this order
 
-- `apps/mobile-app`: Expo React Native client
-- `apps/auth-server`: Next.js app acting as login UI + OAuth endpoints
+1. `docs/architecture.md`
+2. `docs/flow.md`
+3. `docs/code-walkthrough.md`
+4. `docs/api-reference.md`
+5. `docs/sso.md`
+6. `docs/debugging.md`
+7. `docs/glossary.md`
 
-See the sequence diagram in `docs/flow.md` for the end-to-end interaction.
+## Diagram references
+
+- Architecture and component responsibilities: `docs/architecture.md`
+- PKCE and deep-link sequence diagrams: `docs/sequence-diagrams.md`

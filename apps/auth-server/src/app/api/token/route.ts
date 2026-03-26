@@ -7,6 +7,11 @@ type TokenRequest = {
   code_verifier?: string;
 };
 
+/**
+ * OAuth token endpoint.
+ * Input: authorization code + code_verifier from mobile app.
+ * Output: mock access token when PKCE validation succeeds.
+ */
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as TokenRequest;
   const code = body.code?.trim();

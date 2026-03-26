@@ -16,7 +16,8 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
     <main style={{ maxWidth: 460, margin: "48px auto", padding: 16 }}>
       <h1 style={{ marginBottom: 12 }}>Demo Login</h1>
       <p style={{ marginBottom: 20, lineHeight: 1.4 }}>
-        This page simulates the user login step in OAuth2 Authorization Code Flow.
+        This page simulates standard username/password login and SSO login before issuing an OAuth
+        authorization code.
       </p>
 
       <form action="/api/authorize" method="GET" style={{ display: "grid", gap: 12 }}>
@@ -34,6 +35,15 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         </label>
 
         <button type="submit">Sign in</button>
+      </form>
+
+      <hr style={{ margin: "20px 0" }} />
+
+      <form action="/sso-login" method="GET" style={{ display: "grid", gap: 12 }}>
+        <input name="client_id" type="hidden" value={clientId} />
+        <input name="redirect_uri" type="hidden" value={redirectUri} />
+        <input name="code_challenge" type="hidden" value={codeChallenge} />
+        <button type="submit">Login with SSO</button>
       </form>
     </main>
   );
