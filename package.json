@@ -1,0 +1,13 @@
+{
+  "name": "oauth2-pkce-demo",
+  "private": true,
+  "scripts": {
+    "install:all": "cd apps/auth-server && npm install && cd ../mobile-app && npm install",
+    "dev:web": "cd apps/auth-server && npm run dev",
+    "dev:mobile": "cd apps/mobile-app && npm start",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:mobile\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
